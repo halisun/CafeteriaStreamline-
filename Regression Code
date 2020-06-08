@@ -2,3 +2,20 @@
 print "This is a code designed to help me learn Machine learning in the military. \nwhile also figuring out a way to reduce the amount of food waste and \nstreamline cafeteria operations, thereby reducing operating costs. \n\nSergeant Hyun Sang Harrison Park\n"
 #Notes
 print "Actual data unable to be used due to operational security issues in the military."
+#Features: 
+#x1:Number of People to Feed
+#x2:Popularity Score for Dish
+#x3:What day of the Week? (Schedule, sleepiness)
+#x4:Temperature - more likely to be hungry in colder environments, and crave high calorie dishes. 
+#x5:Holiday/rain (No activity)? 
+#x6:During Training?
+#x7:Activity level of the day?
+
+#You would want to make sure that there's no food waste, but would also have to make an extra effort not to have too little food. 
+
+#Demonstrate how big of a problem by showing how much food is wasted regularly. 
+
+#Speed up the Data analysis (through gradient descent) by converting to similar scales, and normalizing around the mean for all feature vectors.
+import math 
+import numpy
+import pandas
