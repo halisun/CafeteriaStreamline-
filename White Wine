@@ -1,0 +1,31 @@
+#Introduction
+print ("This is a code designed to help me learn Machine learning in the military. \n\nSergeant Hyun Sang Harrison Park\n")
+#Notes
+import math ;
+import numpy as np;
+import pandas as pd;
+import matplotlib.pyplot as plot;
+import csv
+
+output = []
+for i in open('winequality-white.csv'):
+  for a in i:
+    a.strip("\n")
+  output.append(i.split(";"))
+
+
+print (output)
+print("fixed acidity,volatile acidity,citric acid,residual sugar,chlorides,free sulfur dioxide,total sulfur dioxide,density,pH,sulphates,alcohol,quality")
+ 
+
+print ("Normal Equation Linear Regression Method")
+X = np.array([[1,1,2],[1,4,5],[1,7,8]]);
+Y = np.array([[1],[2],[3]]);
+print ("X =", X);
+print ("Y=", Y);
+theta = (np.linalg.inv((np.transpose(X))*X))*np.transpose(X)*Y;
+print ("theta=", theta)
+
+print("Gradient Descent Linear Regression Method")
+
+print("Neural Network Method")
