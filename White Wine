@@ -6,7 +6,6 @@ import numpy as np;
 import pandas as pd;
 import matplotlib.pyplot as plot;
 import csv
-import csv
 with open('wqdata', newline='') as f:
   reader = csv.reader(f)
   data = list(reader)
@@ -25,18 +24,25 @@ df = pd.DataFrame((dataset[1::,:]),columns=dataset[0])
 print ("dataset = ")
 print (df)
 
-features = (dataset[:,0:-2])#Features
-targets = dataset[:,-1::]#Targets
+features = (dataset[1::,0:-2])#Features
+targets = dataset[1::,-1::]#Targets
 
 print ("Normal Equation Linear Regression Method")
 X = features
+ones = np.ones((X.shape[0], 1))
+X = np.append(ones, X, axis=1)
 Y = targets
+X=np.array(X,dtype=float)
+Y=np.array(Y,dtype=float)
+
 print ("X =", X);
 print ("Y=", Y);
-theta = (np.linalg.inv((np.transpose(X))*X))*np.transpose(X)*Y;
-print ("theta=", theta)
+#theta = (np.linalg.inv((np.transpose(X))*X))*np.transpose(X)*Y;
+Theta = np.dot(np.linalg.pinv(np.dot(X.T, X)), np.dot(X.T, Y))
 
-
+print (Theta)
+#print ("theta=", theta)
+#def linear_regression_equation(X,Y):
 
 #print("Gradient Descent Linear Regression Method")
 
