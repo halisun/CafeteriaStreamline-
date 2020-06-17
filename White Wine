@@ -7,25 +7,37 @@ import pandas as pd;
 import matplotlib.pyplot as plot;
 import csv
 
-output = []
-for i in open('winequality-white.csv'):
+
+import csv
+with open('wqdata', newline='') as f:
+  reader = csv.reader(f)
+  data = list(reader)
+data = np.array(data)
+dataset = []
+for i in data:
   for a in i:
-    a.strip("\n")
-  output.append(i.split(";"))
+    a = a.split(";")
+    dataset.append(a)
+dataset = np.array(dataset)
+
+size = [len(dataset),len(dataset[0])] #Height.
+print(size)
 
 
-print (output)
-print("fixed acidity,volatile acidity,citric acid,residual sugar,chlorides,free sulfur dioxide,total sulfur dioxide,density,pH,sulphates,alcohol,quality")
+
+df = pd.DataFrame(dataset)
+print (df)
+#print("fixed acidity,volatile acidity,citric acid,residual sugar,chlorides,free sulfur dioxide,total sulfur dioxide,density,pH,sulphates,alcohol,quality")
  
 
-print ("Normal Equation Linear Regression Method")
-X = np.array([[1,1,2],[1,4,5],[1,7,8]]);
-Y = np.array([[1],[2],[3]]);
-print ("X =", X);
-print ("Y=", Y);
-theta = (np.linalg.inv((np.transpose(X))*X))*np.transpose(X)*Y;
-print ("theta=", theta)
+#print ("Normal Equation Linear Regression Method")
+#X = np.array([[1,1,2],[1,4,5],[1,7,8]]);
+#Y = np.array([[1],[2],[3]]);
+#print ("X =", X);
+#print ("Y=", Y);
+#theta = (np.linalg.inv((np.transpose(X))*X))*np.transpose(X)*Y;
+#print ("theta=", theta)
 
-print("Gradient Descent Linear Regression Method")
+#print("Gradient Descent Linear Regression Method")
 
-print("Neural Network Method")
+#print("Neural Network Method")
