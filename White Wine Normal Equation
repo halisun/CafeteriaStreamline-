@@ -42,8 +42,3 @@ Theta = np.dot(np.linalg.pinv(np.dot(X.T, X)), np.dot(X.T, Y))
 
 print (Theta)
 #print ("theta=", theta)
-#def linear_regression_equation(X,Y):
-
-#print("Gradient Descent Linear Regression Method")
-
-#print("Neural Network Method")
