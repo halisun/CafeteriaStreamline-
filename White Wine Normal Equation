@@ -6,7 +6,7 @@ import numpy as np;
 import pandas as pd;
 import matplotlib.pyplot as plot;
 import csv
-with open('wqdata', newline='') as f:
+with open('winequality-white.csv', newline='') as f:
   reader = csv.reader(f)
   data = list(reader)
 data = np.array(data)
@@ -21,8 +21,8 @@ size = [len(dataset),len(dataset[0])] #Height.
 print(size)
 
 df = pd.DataFrame((dataset[1::,:]),columns=dataset[0])
-print ("dataset = ")
-print (df)
+#print ("dataset = ")
+#print (df)
 
 features = (dataset[1::,0:-2])#Features
 targets = dataset[1::,-1::]#Targets
@@ -35,10 +35,15 @@ Y = targets
 X=np.array(X,dtype=float)
 Y=np.array(Y,dtype=float)
 
-print ("X =", X);
-print ("Y=", Y);
+#print ("X =", X);
+#print ("Y=", Y);
 #theta = (np.linalg.inv((np.transpose(X))*X))*np.transpose(X)*Y;
 Theta = np.dot(np.linalg.pinv(np.dot(X.T, X)), np.dot(X.T, Y))
 
 print (Theta)
 #print ("theta=", theta)
+#def linear_regression_equation(X,Y):
+
+#print("Gradient Descent Linear Regression Method")
+
+#print("Neural Network Method")
