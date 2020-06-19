@@ -1,13 +1,5 @@
-#Introduction
-print ("This is a code designed to help me learn Machine learning in the military. \n\nSergeant Hyun Sang Harrison Park\n")
-#Notes
-import math ;
 import numpy as np;
-import pandas as pd;
-import matplotlib.pyplot as plot;
 import csv
-
-
 def partialfilereader(filename,samplesize):
   with open(filename, newline='') as f:
     reader = csv.reader(f)
@@ -58,10 +50,3 @@ def fullfilereader(filename):
   print (Theta)
   return (Theta) 
 
-
-a = fullfilereader('winequality-white.csv')
-b = partialfilereader('winequality-white.csv', 4899)
-
-percentages=(abs((a-b)/a))*100
-print (percentages)
-print (np.mean(percentages))
