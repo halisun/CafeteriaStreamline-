@@ -1,0 +1,8 @@
+from filereader import fullfilereader, partialfilereader
+
+a = fullfilereader('winequality-white.csv')
+b = partialfilereader('winequality-white.csv', 4899)
+
+percentages=(abs((a-b)/a))*100
+print (percentages)
+print ('the error is ', np.mean(percentages))
