@@ -7,7 +7,34 @@ import pandas as pd;
 import matplotlib.pyplot as plot;
 import csv
 
-def filereader(filename):
+
+def partialfilereader(filename,samplesize):
+  with open(filename, newline='') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+  data = np.array(data)
+  dataset = []
+  for i in data:
+    for a in i:
+      a = a.split(";")
+      dataset.append(a)
+  dataset = np.array(dataset)
+  randos = np.random.randint(1,len(dataset),samplesize,int)
+  dataset = dataset[randos]
+  #print (pd.DataFrame((dataset[1::,:]),columns=dataset[0]))
+  #randomnumbers=np.random.randint(0,len(dataset[])
+  features = (dataset[1::,0:-2])#Features
+  targets = dataset[1::,-1::]#Targets
+  ones = np.ones((features.shape[0], 1))
+  X = np.append(ones, features, axis=1)
+  Y = targets
+  X=np.array(X,dtype=float)
+  Y=np.array(Y,dtype=float)
+  Theta = np.dot(np.linalg.inv(np.dot(X.T, X)), np.dot(X.T, Y))
+  print (Theta)
+  return (Theta) 
+
+def fullfilereader(filename):
   with open(filename, newline='') as f:
     reader = csv.reader(f)
     data = list(reader)
@@ -19,21 +46,22 @@ def filereader(filename):
       dataset.append(a)
   dataset = np.array(dataset)
   #print (pd.DataFrame((dataset[1::,:]),columns=dataset[0]))
-
+  #randomnumbers=np.random.randint(0,len(dataset[])
   features = (dataset[1::,0:-2])#Features
   targets = dataset[1::,-1::]#Targets
-
-  print ("Normal Equation Linear Regression Method")
-
   ones = np.ones((features.shape[0], 1))
   X = np.append(ones, features, axis=1)
   Y = targets
   X=np.array(X,dtype=float)
   Y=np.array(Y,dtype=float)
-
   Theta = np.dot(np.linalg.inv(np.dot(X.T, X)), np.dot(X.T, Y))
+  print (Theta)
   return (Theta) 
 
-a = filereader('wqdata')
-b = filereader('winequality-white.csv')
-print ((a-b)/a)
+
+a = fullfilereader('winequality-white.csv')
+b = partialfilereader('winequality-white.csv', 4899)
+
+percentages=(abs((a-b)/a))*100
+print (percentages)
+print (np.mean(percentages))
